@@ -14,21 +14,21 @@ public class World {
 	 * contains no objects.
 	 */
 	public World(int w, int h) {
-		// BE CAREFUL: think about how width/heights translates to row/col in a matrix
+		creatures = new Matrix<Creature>(h, w);
 	}
 
 	/**
 	 * Returns the height of the world.
 	 */
 	public int height() {
-		return 0; // FIX
+		return creatures.numRows();
 	}
 
 	/**
 	 * Returns the width of the world.
 	 */
 	public int width() {
-		return 0; // FIX
+		return creatures.numCols();
 	}
 
 	/**
@@ -37,7 +37,12 @@ public class World {
 	 * returns true *if* pos is an (x,y) location within the bounds of the board.
 	 */
 	public boolean inRange(Position pos) {
-		return false; // FIX
+		if(pos == null) {
+			return false;
+		}
+		int x = pos.getX();
+		int y = pos.getY();
+		return (x >= 0 && x < width() && y >= 0 && y < height());
 	}
 
 	/**
@@ -46,7 +51,10 @@ public class World {
 	 * @throws IllegalArgumentException if pos is not in range
 	 */
 	public void set(Position pos, Creature e) {
-		// FIX
+		if(!inRange(pos)){
+			throw new IllegalArgumentException("Position out of bounds: " + pos);
+		}
+		creatures.set(pos.getY(), pos.getX(), e);
 	}
 
 	/**
@@ -55,8 +63,9 @@ public class World {
 	 * @throws IllegalArgumentException if pos is not in range
 	 */
 	public Creature get(Position pos) {
-		// BE CAREFUL: think about how x,y translates to row/col in a matrix
-		return null; // FIX
+		if(!inRange(pos)){
+			throw new IllegalArgumentException("Position out of bounds: " + pos);
+		}
+		return creatures.get(pos.getY(), pos.getX());
 	}
-
 }
