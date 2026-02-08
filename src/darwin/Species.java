@@ -21,6 +21,7 @@ public class Species {
 
 	/**
 	 * Create a species for the given fileReader. 
+	 * @param BufferedReader formatted from appendix to read species type
 	 */
 	public Species(BufferedReader fileReader) {
 		try {
@@ -73,6 +74,8 @@ public class Species {
 				}
 				if (line != "") {
 					line = fileReader.readLine();
+				} else {
+					line = null;
 				}
 			}
 			
@@ -89,6 +92,7 @@ public class Species {
 
 	/**
 	* Return the char for the species
+	* @return species character, first letter in speices
 	*/
 	public char getSpeciesChar() {
 		return speciesChar;
@@ -96,6 +100,7 @@ public class Species {
 
 	/**
 	 * Return the name of the species.
+	 * @return name of the species
 	 */
 	public String getName() {
 		return name;
@@ -103,6 +108,7 @@ public class Species {
 
 	/**
 	 * Return the color of the species.
+	 * @return color of the species
 	 */
 	public String getColor() {
 		return color;
@@ -110,6 +116,7 @@ public class Species {
 
 	/**
 	 * Return the number of instructions in the program.
+	 * @return size of program
 	 */
 	public int programSize() {
 		return program.size();
