@@ -24,6 +24,7 @@ public class Species {
 	 */
 	public Species(BufferedReader fileReader) {
 		try {
+			this.program = new ArrayList<Instruction>();
 			name = fileReader.readLine();
 			color = fileReader.readLine();
 			speciesChar = name.charAt(0);
@@ -67,10 +68,12 @@ public class Species {
 				}
 				if (opcode >= 5) {
 					program.add(new Instruction(opcode, Integer.valueOf(commands[1])));
-				} else {
+				} else if (opcode > 0) {
 					program.add(new Instruction(opcode));
 				}
-				line = fileReader.readLine();
+				if (line != "") {
+					line = fileReader.readLine();
+				}
 			}
 			
 		} catch (IOException e) {
@@ -80,6 +83,7 @@ public class Species {
 					+ "'");
 			System.exit(1);
 		}
+		System.out.println(program);
 	}
 
 
@@ -117,7 +121,7 @@ public class Species {
 	 * @post returns instruction i of the program.
 	 */
 	public Instruction programStep(int i) {
-		return program.get(i);
+		return program.get(i - 1);
 	}
 
 	/**
