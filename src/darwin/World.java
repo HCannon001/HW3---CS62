@@ -12,6 +12,8 @@ public class World {
 	 * This method creates a new world consisting of width columns and height
 	 * rows, each of which is numbered beginning at 0. A newly created world
 	 * contains no objects.
+	 * @param w Width of world
+	 * @param h Height of world
 	 */
 	public World(int w, int h) {
 		creatures = new Matrix<Creature>(h, w);
@@ -33,7 +35,7 @@ public class World {
 
 	/**
 	 * Returns whether pos is in the world or not.
-	 * 
+	 * @param pos Position we're checking in world
 	 * returns true *if* pos is an (x,y) location within the bounds of the board.
 	 */
 	public boolean inRange(Position pos) {
@@ -47,7 +49,8 @@ public class World {
 
 	/**
 	 * Set a position on the board to contain e.
-	 * 
+	 * @param pos Position we're checking in world
+	 * @param e Creature we're filling in pos 
 	 * @throws IllegalArgumentException if pos is not in range
 	 */
 	public void set(Position pos, Creature e) {
@@ -59,7 +62,7 @@ public class World {
 
 	/**
 	 * Return the contents of a position on the board.
-	 * 
+	 * @param pos Position we're checking in world
 	 * @throws IllegalArgumentException if pos is not in range
 	 */
 	public Creature get(Position pos) {
@@ -68,4 +71,5 @@ public class World {
 		}
 		return creatures.get(pos.getY(), pos.getX());
 	}
+
 }
