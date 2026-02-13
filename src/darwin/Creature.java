@@ -11,6 +11,10 @@ import java.util.*;
  * fact, you should only update the WorldMap from inside the Creature class.
  */
 public class Creature {
+	private Species species;
+	private World world;
+	private Position pos;
+	private int dir;
 
 	/**
 	 * Create a creature of the given species, with the indicated position and
@@ -19,34 +23,38 @@ public class Creature {
 	 * when the creature moves.
 	 */
 	public Creature(Species species, World world, Position pos, int dir) {
+		this.species = species;
+		this.world = world;
+		this.pos = pos;
+		this.dir = dir;
 	}
 
 	/**
 	 * Return the species of the creature.
 	 */
 	public Species species() {
-		return null; // fix
+		return this.species;
 	}
 
 	/**
 	 * Return the current direction of the creature.
 	 */
 	public int direction() {
-		return 0; // fix
+		return this.dir;
 	}
 
 	/**
 	 * Sets the current direction of the creature to the given value 
 	 */
 	public void setDirection(int dir){
-		//fix
+		this.dir = dir;
 	}
 
 	/**
 	 * Return the position of the creature.
 	 */
 	public Position position() {
-		return null; // fix
+		return this.pos;
 	}
 
 	/**
