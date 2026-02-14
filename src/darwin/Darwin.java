@@ -24,7 +24,67 @@ import java.io.*;
  */
 class Darwin {
 
+	private World world;
+	private Species[] species;
+	private ArrayList<Creature> creatures = new ArrayList<Creature>();
+	
+	/**
+	 * Populates species array and creatures array to fill the board starting them in random direction and locations
+	 * @param speciesFilenames
+	*/
 	public Darwin(String[] speciesFilenames) {
+		//create world for creatures to live in
+		world = new World(15, 15);
+
+		//populate species array with inputed species types
+		species = new Species[speciesFilenames.length];
+		for (int i = 0; i < speciesFilenames.length; i++) {
+			try {
+				species[i] = new Species(new BufferedReader(new FileReader(speciesFilenames[i])));
+			}
+			catch (IOException e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		//create 10 creatures for each species
+		for (int i = 0; i < species.length; i++) {
+			createCreatures(10, species[i]);
+		}
+	}
+
+	/**
+	 * Input an amount and a species type and the function will create the inputed amount of creatures on the map
+	 * They will be put into the creatures ArrayList
+	 * @param count The amount of creatures to create
+	 * @param species The species we are Creating
+	 */
+	private void createCreatures(int count, Species species) {
+		//create random object
+		Random random = new Random();
+
+		for (int j = 0; j < count; j++) {
+			//generate a random start location
+			int randX;
+			int randY;
+			do {
+				randX = random.nextInt(world.width());
+				randY = random.nextInt(world.height());
+			} while (world.get(new Position(randX, randY)) != null);
+			//starting position of creature
+			Position position = new Position(randX, randY);
+			//starting direction of creature
+			int dir = random.nextInt(4);
+			creatures.add(new Creature(species, world, position, dir));
+		}
+	}
+
+	/**
+	 * Itterate through each creature and call the takeOneTurn function for each creature
+	 */
+	private void giveEachCreatureOneTurn() {
+		for (Creature creature : creatures) {
+			creature.takeOneTurn();
+		}
 	}
 
 	/**
@@ -45,6 +105,7 @@ class Darwin {
 	 * the latter options, make sure to change the code back to: Darwin d = new
 	 * Darwin(s); before submitting. If you want to use relative filenames for the
 	 * creatures they should be of the form "./Creatures/Hop.txt".
+	 * 
 	 */
 	public static void main(String s[]) {
 		Darwin d = new Darwin(s);
@@ -52,9 +113,12 @@ class Darwin {
 	}
 
 	public void simulate() {
-
 		// don't forget to call pause somewhere in the simulator's loop...
 		// make sure to pause using WorldMap so that TAs can modify pause time
 		// when grading
+		for (int i = 0; i < 200; i ++) {
+			giveEachCreatureOneTurn();
+			WorldMap.pause(500);
+		}
 	}
 }
