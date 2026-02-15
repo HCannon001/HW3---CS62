@@ -90,8 +90,12 @@ public class Creature {
 			int op = inst.getOpcode();
 
 			Position ahead = pos.getAdjacent(dir);
+			Position ahead2 = ahead.getAdjacent(dir);
 			boolean inRangeAhead = world.inRange(ahead);
+			boolean inRangeAhead2 = world.inRange(ahead2);
+
 			Creature aheadCreature = inRangeAhead ? world.get(ahead) : null; 
+			Creature aheadCreature2 = inRangeAhead ? world.get(ahead) : null; 
 
 			Position left = pos.getAdjacent(dir + 90);
 			Position right = pos.getAdjacent(dir - 90);
@@ -150,24 +154,6 @@ public class Creature {
 					return;
 				}
 
-				case Instruction.INFECT2: { // Extra Credit: Mutation to 
-					nextInstruction++;
-					for (int i = 0; i < sideCreature.size(); i++) {
-						Creature side = sideCreature.get(i);
-						if (side != null && side.species != this.species) {
-							side.species = this.species; // convert enemy
-							side.nextInstruction = 1; // restart program
-							WorldMap.displaySquare(
-								side.pos,
-								side.species.getSpeciesChar(),
-								side.dir,
-								side.species.getColor()
-							);
-						}
-					}
-					return;
-				}
-
 				case Instruction.IFEMPTY: {
 					int addr = inst.getAddress();
 					if (addr == 0) throw new IllegalArgumentException("ifempty missing address");
@@ -194,6 +180,14 @@ public class Creature {
 					int addr = inst.getAddress();
 					if (addr == 0) throw new IllegalArgumentException("ifenemy missing address");
 					boolean enemy = (inRangeAhead && aheadCreature != null && aheadCreature.species != this.species);
+					nextInstruction = enemy ? addr : (nextInstruction + 1);
+					break;
+				}
+
+				case Instruction.IFENEMY2: {
+					int addr = inst.getAddress();
+					if (addr == 0) throw new IllegalArgumentException("ifenemy missing address");
+					boolean enemy = (inRangeAhead2 && aheadCreature2 != null && aheadCreature2.species != this.species);
 					nextInstruction = enemy ? addr : (nextInstruction + 1);
 					break;
 				}
