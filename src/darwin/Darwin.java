@@ -25,7 +25,6 @@ import java.io.*;
 class Darwin {
 
 	private World world;
-	private WorldMap worldMap;
 	private Species[] species;
 	private ArrayList<Creature> creatures = new ArrayList<Creature>();
 	
