@@ -70,7 +70,7 @@ public class Species {
 					default:
 						break;
 				}
-				if (opcode >= 5 && opcode < 11) {
+				if (opcode >= 5) {
 					program.add(new Instruction(opcode, Integer.valueOf(commands[1])));
 				} else if (opcode > 0) {
 					program.add(new Instruction(opcode));

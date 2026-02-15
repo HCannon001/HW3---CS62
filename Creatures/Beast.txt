@@ -1,7 +1,8 @@
 Beast
 black
-ifenemy2 6
-ifenemy 3
+ifenemy 6
+ifenemy2 8
+ifwall 8
 hop
 go 1
 infect
