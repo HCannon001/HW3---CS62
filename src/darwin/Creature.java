@@ -91,25 +91,12 @@ public class Creature {
 
 			Position ahead = pos.getAdjacent(dir);
 			Position ahead2 = ahead.getAdjacent(dir);
+
 			boolean inRangeAhead = world.inRange(ahead);
 			boolean inRangeAhead2 = world.inRange(ahead2);
 
 			Creature aheadCreature = inRangeAhead ? world.get(ahead) : null; 
 			Creature aheadCreature2 = inRangeAhead ? world.get(ahead2) : null; 
-
-			Position left = pos.getAdjacent(dir + 90);
-			Position right = pos.getAdjacent(dir - 90);
-
-			boolean inRangeLeft = world.inRange(left);
-			boolean inRangeRight = world.inRange(right);
-
-			ArrayList<Creature> sideCreature = new ArrayList<Creature>();
-			if (inRangeLeft) {
-				sideCreature.add(world.get(left));
-			}
-			if (inRangeRight) {
-				sideCreature.add(world.get(right));
-			}
 
 			switch (op) {
 				case Instruction.HOP: {
