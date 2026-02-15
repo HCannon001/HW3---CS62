@@ -64,6 +64,9 @@ public class Species {
 					case "go":
 						opcode = 10;
 						break;
+					case "infect2":
+						opcode = 11;
+						break;
 					default:
 						break;
 				}

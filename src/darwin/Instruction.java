@@ -100,6 +100,8 @@ public class Instruction {
 				return "ifrandom " + address;
 			case GO :
 				return "go " + address;
+			case INFECT2 :
+				return "infect2";
 			default :
 				return "BAD INSTRUCTION: " + opcode + " " + address;
 		}
