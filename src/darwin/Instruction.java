@@ -37,8 +37,8 @@ public class Instruction {
 	public static final int IFRANDOM = 9;
 	/** opcode for the go instruction */
 	public static final int GO = 10;
-	/** opcode for the infect2 instruction */
-	public static final int INFECT2 = 11;
+	/** opcode for the ifenemy2 instruction */
+	public static final int IFENEMY2 = 11;
 
 	private int opcode; /** the opcode */
 	private int address; /** the address */
@@ -100,7 +100,7 @@ public class Instruction {
 				return "ifrandom " + address;
 			case GO :
 				return "go " + address;
-			case INFECT2 :
+			case IFENEMY2 :
 				return "infect2";
 			default :
 				return "BAD INSTRUCTION: " + opcode + " " + address;
