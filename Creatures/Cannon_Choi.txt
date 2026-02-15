@@ -21,5 +21,6 @@ right
 infect
 right
 infect
-ifrandom 1
 go 5
+
+Custom Creature that finds a wall and uses as defense by Henry and Phinues

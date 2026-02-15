@@ -9,3 +9,5 @@ infect
 go 1
 left
 go 1
+
+Custom Creature to show ifenemy2
