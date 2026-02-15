@@ -1,14 +1,25 @@
 Bob
 orange
-ifenemy 13
-ifwall 6
-ifsame 6
+ifsame 8
+ifwall 10
+ifenemy 6
 hop
-go 1
-ifrandom 9
-left
-go 1
-right
 go 1
 infect
 go 1
+left
+go 1
+left
+infect
+left
+infect
+left
+infect
+right
+infect
+right
+infect
+right
+infect
+ifrandom 1
+go 5

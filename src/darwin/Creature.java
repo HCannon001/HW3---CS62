@@ -3,6 +3,7 @@ package darwin;
 import java.util.*;
 
 /**
+ * Extra-credit: We have added ifahead2, so that the creatures have a sightline 2 ahead now.
  * This class represents one creature on the board. Each creature must remember
  * its species, position, direction, and the world in which it is living.
  * In addition, the Creature must remember the next instruction out of its
@@ -171,7 +172,7 @@ public class Creature {
 					break;
 				}
 
-				case Instruction.IFENEMY2: {
+				case Instruction.IFENEMY2: { // Extra Credit
 					int addr = inst.getAddress();
 					if (addr == 0) throw new IllegalArgumentException("ifenemy missing address");
 					boolean enemy = (inRangeAhead2 && aheadCreature2 != null && aheadCreature2.species != this.species);
