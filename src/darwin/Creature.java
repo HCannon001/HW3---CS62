@@ -96,7 +96,7 @@ public class Creature {
 			boolean inRangeAhead2 = world.inRange(ahead2);
 
 			Creature aheadCreature = inRangeAhead ? world.get(ahead) : null; 
-			Creature aheadCreature2 = inRangeAhead ? world.get(ahead2) : null; 
+			Creature aheadCreature2 = inRangeAhead2 ? world.get(ahead2) : null; 
 
 			switch (op) {
 				case Instruction.HOP: {
