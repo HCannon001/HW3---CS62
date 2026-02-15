@@ -95,7 +95,7 @@ public class Creature {
 			boolean inRangeAhead2 = world.inRange(ahead2);
 
 			Creature aheadCreature = inRangeAhead ? world.get(ahead) : null; 
-			Creature aheadCreature2 = inRangeAhead ? world.get(ahead) : null; 
+			Creature aheadCreature2 = inRangeAhead ? world.get(ahead2) : null; 
 
 			Position left = pos.getAdjacent(dir + 90);
 			Position right = pos.getAdjacent(dir - 90);
