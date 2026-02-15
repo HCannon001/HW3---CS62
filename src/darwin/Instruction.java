@@ -37,6 +37,8 @@ public class Instruction {
 	public static final int IFRANDOM = 9;
 	/** opcode for the go instruction */
 	public static final int GO = 10;
+	/** opcode for the infect2 instruction */
+	public static final int INFECT2 = 11;
 
 	private int opcode; /** the opcode */
 	private int address; /** the address */

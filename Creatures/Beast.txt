@@ -1,0 +1,9 @@
+Beast
+yellow
+ifenemy 8
+ifwall 8
+hop
+infect2
+go 1
+left
+go 6
