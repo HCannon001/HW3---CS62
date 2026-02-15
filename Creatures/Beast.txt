@@ -1,5 +1,5 @@
 Beast
-yellow
+black
 ifenemy 8
 ifwall 8
 hop

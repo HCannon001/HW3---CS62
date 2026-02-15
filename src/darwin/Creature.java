@@ -93,6 +93,20 @@ public class Creature {
 			boolean inRangeAhead = world.inRange(ahead);
 			Creature aheadCreature = inRangeAhead ? world.get(ahead) : null; 
 
+			Position left = pos.getAdjacent(dir + 90);
+			Position right = pos.getAdjacent(dir - 90);
+
+			boolean inRangeLeft = world.inRange(left);
+			boolean inRangeRight = world.inRange(right);
+
+			ArrayList<Creature> sideCreature = new ArrayList<Creature>();
+			if (inRangeLeft) {
+				sideCreature.add(world.get(left));
+			}
+			if (inRangeRight) {
+				sideCreature.add(world.get(right));
+			}
+
 			switch (op) {
 				case Instruction.HOP: {
 					nextInstruction++;
@@ -132,6 +146,24 @@ public class Creature {
 							aheadCreature.dir,
 							aheadCreature.species.getColor()
 						);
+					}
+					return;
+				}
+
+				case Instruction.INFECT2: { // Extra Credit: Mutation to 
+					nextInstruction++;
+					for (int i = 0; i < sideCreature.size(); i++) {
+						Creature side = sideCreature.get(i);
+						if (side != null && side.species != this.species) {
+							side.species = this.species; // convert enemy
+							side.nextInstruction = 1; // restart program
+							WorldMap.displaySquare(
+								side.pos,
+								side.species.getSpeciesChar(),
+								side.dir,
+								side.species.getColor()
+							);
+						}
 					}
 					return;
 				}
