@@ -133,9 +133,9 @@ public class AutograderCompTest {
 	public void testDarwin() {
 		try {
 			String[] s = new String[3];
-			s[0] = "Hop.txt";
-			s[1] = "Flytrap.txt";
-			s[2] = "Food.txt";
+			s[0] = "Creatures/Hop.txt";
+			s[1] = "Creatures/Flytrap.txt";
+			s[2] = "Creatures/Food.txt";
 
 			System.out.println("Darwin compatibility test passed if a well populated board appears w/no errors.");
 

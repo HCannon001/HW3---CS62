@@ -25,6 +25,7 @@ import java.io.*;
 class Darwin {
 
 	private World world;
+	private WorldMap worldMap;
 	private Species[] species;
 	private ArrayList<Creature> creatures = new ArrayList<Creature>();
 	
@@ -33,6 +34,8 @@ class Darwin {
 	 * @param speciesFilenames
 	*/
 	public Darwin(String[] speciesFilenames) {
+		//create WorldMap for display
+		WorldMap.createWorldMap(15, 15);
 		//create world for creatures to live in
 		world = new World(15, 15);
 
