@@ -1,3 +1,10 @@
 Beast
 black
-ifen
+ifenemy2 6
+ifenemy 3
+hop
+go 1
+infect
+go 1
+left
+go 1
